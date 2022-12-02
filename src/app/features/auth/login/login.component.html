@@ -1,0 +1,43 @@
+<div class="container login-container" fxLayout="row" fxLayoutAlign="center center">
+    <form [formGroup]="loginForm" fxFlex="30%" fxFlex.sm="50%" fxFlex.xs="90%">
+        <mat-card>
+            <mat-card-title>Recruit Mint</mat-card-title>
+            <mat-card-subtitle>Вход в системата</mat-card-subtitle>
+            <mat-card-content>
+                <mat-form-field class="full-width">
+                    <input id="emailInput" matInput placeholder="Имейл" formControlName="email" autocomplete="email"
+                        type="email">
+
+                    <mat-error id="invalidEmailError" *ngIf="loginForm.controls['email'].hasError('email')">
+                        Моля въведете валиден имейл адрес
+                    </mat-error>
+                    <mat-error id="requiredEmailError" *ngIf="loginForm.controls['email'].hasError('required')">
+                        <span>Имейлът е <strong>задължително</strong> поле</span>
+                    </mat-error>
+
+                </mat-form-field>
+
+                <mat-form-field class="full-width">
+                    <input id="passwordInput" matInput placeholder="Парола" formControlName="password" type="password"
+                        autocomplete="current-password">
+                    <mat-error id="requiredPasswordError" *ngIf="loginForm.controls['email'].hasError('required')">
+                        <span>Паролата е <strong>задължително</strong> поле</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <div class="full-width">
+                    <mat-slide-toggle formControlName="rememberMe">Запомни този имейл адрес</mat-slide-toggle>
+                </div>
+
+            </mat-card-content>
+
+            <mat-card-actions class="login-actions">
+                <button mat-raised-button id="login" color="primary" [disabled]="loginForm.invalid || loading"
+                    (click)="login()">Логин</button>
+                <button mat-button id="resetPassword" (click)="resetPassword()" type="button">Забравена парола</button>
+            </mat-card-actions>
+        </mat-card>
+
+        <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+    </form>
+</div>
