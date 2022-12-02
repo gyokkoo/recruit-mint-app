@@ -45,8 +45,8 @@ export class CustomerListComponent implements OnInit {
 
   ngOnInit() {
     this.titleService.setTitle('angular-material-template - Customers');
-    this.logger.log('Customers loaded');
-    this.notificationService.openSnackBar('Customers loaded');
+    this.logger.log('Кандидатите са заредени');
+    this.notificationService.openSnackBar('Кандидатите са заредени');
     this.dataSource.sort = this.sort;
 
   }

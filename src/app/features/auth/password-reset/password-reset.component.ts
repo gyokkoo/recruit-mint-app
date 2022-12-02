@@ -40,6 +40,8 @@ export class PasswordResetComponent implements OnInit {
       }
     });
 
+    this.email = this.authService.getCurrentUser().email;
+
     this.form = new UntypedFormGroup({
       newPassword: new UntypedFormControl('', Validators.required),
       newPasswordConfirm: new UntypedFormControl('', Validators.required)
@@ -52,7 +54,7 @@ export class PasswordResetComponent implements OnInit {
     const passwordConfirm = this.form.get('newPasswordConfirm')?.value;
 
     if (password !== passwordConfirm) {
-      this.notificationService.openSnackBar('Passwords do not match');
+      this.notificationService.openSnackBar('Паролите не съвпадат');
       return;
     }
 
@@ -61,7 +63,7 @@ export class PasswordResetComponent implements OnInit {
     this.authService.passwordReset(this.email, this.token, password, passwordConfirm)
       .subscribe(
         () => {
-          this.notificationService.openSnackBar('Your password has been changed.');
+          this.notificationService.openSnackBar('Паролата е променена успешно.');
           this.router.navigate(['/auth/login']);
         },
         (error: any) => {

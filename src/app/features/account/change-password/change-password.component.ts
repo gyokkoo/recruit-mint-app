@@ -5,11 +5,10 @@ import { AuthenticationService } from 'src/app/core/services/auth.service';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { SpinnerService } from 'src/app/core/services/spinner.service';
 
-
 @Component({
   selector: 'app-change-password',
-  templateUrl: './change-password.component.html',
-  styleUrls: ['./change-password.component.css']
+  templateUrl: 'change-password.component.html',
+  styleUrls: ['change-password.component.css']
 })
 export class ChangePasswordComponent implements OnInit {
 
@@ -52,9 +51,8 @@ export class ChangePasswordComponent implements OnInit {
   }
 
   changePassword() {
-
     if (this.newPassword !== this.newPasswordConfirm) {
-      this.notificationService.openSnackBar('New passwords do not match.');
+      this.notificationService.openSnackBar('Новата парола не съвпада.');
       return;
     }
 
@@ -65,7 +63,8 @@ export class ChangePasswordComponent implements OnInit {
         data => {
           this.logger.info(`User ${email} changed password.`);
           this.form.reset();
-          this.notificationService.openSnackBar('Your password has been changed.');
+          this.notificationService.openSnackBar('Паролата е успешно сменена.');
+          this.authService.logout();
         },
         error => {
           this.notificationService.openSnackBar(error.error);

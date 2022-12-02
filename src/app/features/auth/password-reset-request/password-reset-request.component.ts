@@ -38,8 +38,8 @@ export class PasswordResetRequestComponent implements OnInit {
     this.authService.passwordResetRequest(this.email)
       .subscribe(
         results => {
-          this.router.navigate(['/auth/login']);
-          this.notificationService.openSnackBar('Password verification mail has been sent to your email address.');
+          this.router.navigate(['/auth/password-reset']);
+          this.notificationService.openSnackBar('На вашия имейл е изпратено потвърждение за смяна на парола.');
         },
         error => {
           this.loading = false;
