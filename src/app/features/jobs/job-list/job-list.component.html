@@ -1,37 +1,28 @@
 <div class="container" fxLayout="row" fxLayoutAlign="center none">
   <div fxFlex="95%">
-
     <mat-card>
       <mat-card-content>
         <h2>Отворени позиции за работа</h2>
-
         <table mat-table [dataSource]="dataSource" matSort>
-
-          <!-- Position Column -->
-          <ng-container matColumnDef="position">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
-            <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-          </ng-container>
-        
           <!-- Name Column -->
           <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Име на обява </th>
             <td mat-cell *matCellDef="let element"> {{element.name}} </td>
           </ng-container>
         
-          <!-- Description -->
-          <ng-container matColumnDef="weight">
+          <!-- Requirements -->
+          <ng-container matColumnDef="requirements">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Описание </th>
-            <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.requirements}} </td>
           </ng-container>
         
           <!-- Symbol Column -->
-          <ng-container matColumnDef="symbol">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Заплата </th>
-            <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+          <ng-container matColumnDef="isRemote">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Работа от вкъщиа </th>
+            <td mat-cell *matCellDef="let element"> {{element.isRemote ? 'Да' : 'Не'}} </td>
           </ng-container>
 
-          <ng-container matColumnDef="actions">
+          <ng-container matColumnDef="action">
             <mat-header-cell *matHeaderCellDef>Промяна</mat-header-cell>
             <mat-cell *matCellDef="let row;">
               <a mat-icon-button>
