@@ -4,12 +4,14 @@
          <h2>Здравейте, {{ currentUser.fullName }}!</h2>
       </div>
 
-      <div class="container" fxLayout="row" fxLayoutAlign="center none">
-         <div fxFlex="50%" class="text-center no-records animate">
-            <mat-icon>dashboard</mat-icon>
-            <p>Това е началната страница.</p>
-         </div>
-         <mat-icon> </mat-icon>
-      </div>
+      <job-list [showActions]='false'></job-list>
+
+<!--      <div class="container" fxLayout="row" fxLayoutAlign="center none">-->
+<!--         <div fxFlex="50%" class="text-center no-records animate">-->
+<!--            <mat-icon>dashboard</mat-icon>-->
+<!--            <p>Това е началната страница.</p>-->
+<!--         </div>-->
+<!--         <mat-icon> </mat-icon>-->
+<!--      </div>-->
    </div>
 </div>

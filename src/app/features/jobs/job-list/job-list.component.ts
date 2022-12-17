@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { NGXLogger } from 'ngx-logger';
@@ -15,12 +15,15 @@ export interface JobItem {
 }
 
 @Component({
-   selector: 'app-customer-list',
+   selector: 'job-list',
    templateUrl: 'job-list.component.html',
    styleUrls: ['job-list.component.css'],
 })
 export class JobListComponent implements OnInit {
+   @Input() showActions: boolean = true;
+
    displayedColumns: string[] = ['name', 'requirements', 'description', 'isRemote', 'action'];
+
    dataSource = new MatTableDataSource(jobData);
 
    @ViewChild(MatSort, { static: true })
@@ -51,8 +54,8 @@ export class JobListComponent implements OnInit {
 
    ngOnInit(): void {
       this.titleService.setTitle('angular-material-template - Customers');
-      this.logger.log('Кандидатите са заредени');
-      this.notificationService.openSnackBar('Кандидатите са заредени');
+      this.logger.log('Позициите са заредени');
+      this.notificationService.openSnackBar('Позициите са заредени');
       this.dataSource.sort = this.sort;
    }
 }

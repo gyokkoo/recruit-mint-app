@@ -7,5 +7,6 @@ import { JobListComponent } from './job-list/job-list.component';
 @NgModule({
    imports: [CommonModule, CustomersRoutingModule, SharedModule],
    declarations: [JobListComponent],
+   exports: [JobListComponent],
 })
 export class CustomersModule {}
