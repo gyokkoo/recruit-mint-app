@@ -1,0 +1,18 @@
+# .prettierignore defines which files to be excluded from Prettier formatting.
+**/*.map
+**/*.md
+**/node_modules
+**/npm-shrinkwrap.json
+**/package-lock.json
+**/*.xml
+**/*.yaml
+**/.*
+**/_*
+/apps/esx-client/src/assets/i18n
+/build
+/coverage
+/dist
+/legacy-package
+/target
+/test
+/tools

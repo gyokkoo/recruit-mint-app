@@ -4,16 +4,14 @@ import { LayoutComponent } from 'src/app/shared/layout/layout.component';
 import { TypographyComponent } from './typography/typography.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: LayoutComponent,
-    children: [
-      { path: '', component: TypographyComponent },
-    ]
-  }
+   {
+      path: '',
+      component: LayoutComponent,
+      children: [{ path: '', component: TypographyComponent }],
+   },
 ];
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+   imports: [RouterModule.forChild(routes)],
+   exports: [RouterModule],
 })
-export class TypographyRoutingModule { }
+export class TypographyRoutingModule {}

@@ -5,13 +5,8 @@ import { TypographyRoutingModule } from './typography-routing.module';
 import { TypographyComponent } from './typography/typography.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
-
 @NgModule({
-  declarations: [TypographyComponent],
-  imports: [
-    CommonModule,
-    SharedModule,
-    TypographyRoutingModule
-  ]
+   declarations: [TypographyComponent],
+   imports: [CommonModule, SharedModule, TypographyRoutingModule],
 })
-export class TypographyModule { }
+export class TypographyModule {}

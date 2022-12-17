@@ -5,17 +5,15 @@ import { LayoutComponent } from '../../shared/layout/layout.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: LayoutComponent,
-    children: [
-      { path: '', component: AboutPageComponent },
-    ]
-  }
+   {
+      path: '',
+      component: LayoutComponent,
+      children: [{ path: '', component: AboutPageComponent }],
+   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+   imports: [RouterModule.forChild(routes)],
+   exports: [RouterModule],
 })
-export class AboutRoutingModule { }
+export class AboutRoutingModule {}

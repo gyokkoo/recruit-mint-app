@@ -5,17 +5,15 @@ import { LayoutComponent } from 'src/app/shared/layout/layout.component';
 import { DashboardHomeComponent } from './dashboard-home/dashboard-home.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: LayoutComponent,
-    children: [
-      { path: '', component: DashboardHomeComponent },
-    ]
-  }
+   {
+      path: '',
+      component: LayoutComponent,
+      children: [{ path: '', component: DashboardHomeComponent }],
+   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+   imports: [RouterModule.forChild(routes)],
+   exports: [RouterModule],
 })
-export class DashboardRoutingModule { }
+export class DashboardRoutingModule {}

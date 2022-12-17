@@ -5,13 +5,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { JobListComponent } from './job-list/job-list.component';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        CustomersRoutingModule,
-        SharedModule
-    ],
-    declarations: [
-        JobListComponent
-    ]
+   imports: [CommonModule, CustomersRoutingModule, SharedModule],
+   declarations: [JobListComponent],
 })
-export class CustomersModule { }
+export class CustomersModule {}

@@ -5,17 +5,15 @@ import { LayoutComponent } from 'src/app/shared/layout/layout.component';
 import { UserListComponent } from './user-list/user-list.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: LayoutComponent,
-    children: [
-      { path: '', component: UserListComponent },
-    ]
-  }
+   {
+      path: '',
+      component: LayoutComponent,
+      children: [{ path: '', component: UserListComponent }],
+   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+   imports: [RouterModule.forChild(routes)],
+   exports: [RouterModule],
 })
-export class UsersRoutingModule { }
+export class UsersRoutingModule {}

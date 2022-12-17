@@ -7,48 +7,51 @@ import { NotificationService } from 'src/app/core/services/notification.service'
 import { AuthenticationService } from 'src/app/core/services/auth.service';
 
 @Component({
-  selector: 'app-password-reset-request',
-  templateUrl: './password-reset-request.component.html',
-  styleUrls: ['./password-reset-request.component.css']
+   selector: 'app-password-reset-request',
+   templateUrl: './password-reset-request.component.html',
+   styleUrls: ['./password-reset-request.component.css'],
 })
 export class PasswordResetRequestComponent implements OnInit {
+   private email!: string;
+   form!: UntypedFormGroup;
+   loading!: boolean;
 
-  private email!: string;
-  form!: UntypedFormGroup;
-  loading!: boolean;
+   constructor(
+      private authService: AuthenticationService,
+      private notificationService: NotificationService,
+      private titleService: Title,
+      private router: Router
+   ) {}
 
-  constructor(private authService: AuthenticationService,
-    private notificationService: NotificationService,
-    private titleService: Title,
-    private router: Router) { }
+   ngOnInit() {
+      this.titleService.setTitle('angular-material-template - Password Reset Request');
 
-  ngOnInit() {
-    this.titleService.setTitle('angular-material-template - Password Reset Request');
+      this.form = new UntypedFormGroup({
+         email: new UntypedFormControl('', [Validators.required, Validators.email]),
+      });
 
-    this.form = new UntypedFormGroup({
-      email: new UntypedFormControl('', [Validators.required, Validators.email])
-    });
+      this.form.get('email')?.valueChanges.subscribe((val: string) => {
+         this.email = val.toLowerCase();
+      });
+   }
 
-    this.form.get('email')?.valueChanges
-      .subscribe((val: string) => { this.email = val.toLowerCase(); });
-  }
-
-  resetPassword() {
-    this.loading = true;
-    this.authService.passwordResetRequest(this.email)
-      .subscribe(
-        results => {
-          this.router.navigate(['/auth/password-reset']);
-          this.notificationService.openSnackBar('На вашия имейл е изпратено потвърждение за смяна на парола.');
-        },
-        error => {
-          this.loading = false;
-          this.notificationService.openSnackBar(error.error);
-        }
+   resetPassword() {
+      this.loading = true;
+      this.authService.passwordResetRequest(this.email).subscribe(
+         (results) => {
+            this.router.navigate(['/auth/password-reset']);
+            this.notificationService.openSnackBar(
+               'На вашия имейл е изпратено потвърждение за смяна на парола.'
+            );
+         },
+         (error) => {
+            this.loading = false;
+            this.notificationService.openSnackBar(error.error);
+         }
       );
-  }
+   }
 
-  cancel() {
-    this.router.navigate(['/']);
-  }
+   cancel() {
+      this.router.navigate(['/']);
+   }
 }

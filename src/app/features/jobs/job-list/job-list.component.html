@@ -1,45 +1,59 @@
 <div class="container" fxLayout="row" fxLayoutAlign="center none">
-  <div fxFlex="95%">
-    <mat-card>
-      <mat-card-content>
-        <h2>Отворени позиции за работа</h2>
-        <table mat-table [dataSource]="dataSource" matSort>
-          <!-- Name Column -->
-          <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Име на обява </th>
-            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-          </ng-container>
-        
-          <!-- Requirements -->
-          <ng-container matColumnDef="requirements">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Описание </th>
-            <td mat-cell *matCellDef="let element"> {{element.requirements}} </td>
-          </ng-container>
-        
-          <!-- Symbol Column -->
-          <ng-container matColumnDef="isRemote">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Работа от вкъщиа </th>
-            <td mat-cell *matCellDef="let element"> {{element.isRemote ? 'Да' : 'Не'}} </td>
-          </ng-container>
+   <div fxFlex="95%">
+      <mat-card>
+         <mat-card-content>
+            <h2>Отворени позиции за работа</h2>
+            <button
+               mat-button
+               class="add-btn"
+               (click)="openDialog('Add', {})"
+               mat-flat-button
+               color="primary"
+            >
+               Добави позиция
+            </button>
 
-          <ng-container matColumnDef="action">
-            <mat-header-cell *matHeaderCellDef>Промяна</mat-header-cell>
-            <mat-cell *matCellDef="let row;">
-              <a mat-icon-button>
-                <mat-icon>edit</mat-icon>
-              </a>
-              <a mat-icon-button>
-                <mat-icon color="warn">delete</mat-icon>
-              </a>
-            </mat-cell>
-          </ng-container>
-        
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
-        
-      </mat-card-content>
-    </mat-card>
+            <table mat-table [dataSource]="dataSource" matSort>
+               <!-- Name Column -->
+               <ng-container matColumnDef="name">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Име на обява</th>
+                  <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+               </ng-container>
 
-  </div>
+               <!-- Requirements -->
+               <ng-container matColumnDef="requirements">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Изисквания</th>
+                  <td mat-cell *matCellDef="let element">{{ element.requirements }}</td>
+               </ng-container>
+
+               <!-- Description -->
+               <ng-container matColumnDef="description">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Кратко описание</th>
+                  <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+               </ng-container>
+
+               <!-- Symbol Column -->
+               <ng-container matColumnDef="isRemote">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Remote</th>
+                  <td mat-cell *matCellDef="let element">{{ element.isRemote ? 'Да' : 'Не' }}</td>
+               </ng-container>
+
+               <ng-container matColumnDef="action">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Промяна</th>
+                  <td mat-cell *matCellDef="let row">
+                     <a mat-icon-button>
+                        <mat-icon>edit</mat-icon>
+                     </a>
+                     <a mat-icon-button>
+                        <mat-icon color="warn">delete</mat-icon>
+                     </a>
+                  </td>
+               </ng-container>
+
+               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+               <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            </table>
+         </mat-card-content>
+      </mat-card>
+   </div>
 </div>
