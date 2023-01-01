@@ -6,9 +6,15 @@ import { LoginComponent } from './login/login.component';
 import { PasswordResetRequestComponent } from './password-reset-request/password-reset-request.component';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
    imports: [CommonModule, SharedModule, AuthRoutingModule],
-   declarations: [LoginComponent, PasswordResetRequestComponent, PasswordResetComponent],
+   declarations: [
+      LoginComponent,
+      PasswordResetRequestComponent,
+      PasswordResetComponent,
+      RegisterComponent,
+   ],
 })
 export class AuthModule {}

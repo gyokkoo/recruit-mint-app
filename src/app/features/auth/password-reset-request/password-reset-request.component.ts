@@ -8,8 +8,8 @@ import { AuthenticationService } from 'src/app/core/services/auth.service';
 
 @Component({
    selector: 'app-password-reset-request',
-   templateUrl: './password-reset-request.component.html',
-   styleUrls: ['./password-reset-request.component.css'],
+   templateUrl: 'password-reset-request.component.html',
+   styleUrls: ['password-reset-request.component.css'],
 })
 export class PasswordResetRequestComponent implements OnInit {
    private email!: string;
@@ -39,7 +39,12 @@ export class PasswordResetRequestComponent implements OnInit {
       this.loading = true;
       this.authService.passwordResetRequest(this.email).subscribe(
          (results) => {
-            this.router.navigate(['/auth/password-reset']);
+            this.router.navigate([
+               '/auth/password-reset',
+               {
+                  email: this.email,
+               },
+            ]);
             this.notificationService.openSnackBar(
                'На вашия имейл е изпратено потвърждение за смяна на парола.'
             );

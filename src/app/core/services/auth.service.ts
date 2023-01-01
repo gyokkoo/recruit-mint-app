@@ -13,7 +13,7 @@ import { of, EMPTY, Observable } from 'rxjs';
 export class AuthenticationService {
    constructor(private http: HttpClient, @Inject('LOCALSTORAGE') private localStorage: Storage) {}
 
-   login(email: string, password: string): Observable<boolean> {
+   login$(email: string, password: string): Observable<boolean> {
       return of(true).pipe(
          delay(1000),
          map((/*response*/) => {
@@ -47,6 +47,10 @@ export class AuthenticationService {
             return true;
          })
       );
+   }
+
+   register$(email: string, password: string): Observable<boolean> {
+      return this.login$(email, password);
    }
 
    logout(): void {

@@ -40,7 +40,7 @@ export class PasswordResetComponent implements OnInit {
          }
       });
 
-      this.email = this.authService.getCurrentUser().email;
+      this.email = this.activeRoute.snapshot.paramMap.get('email') || '';
 
       this.form = new UntypedFormGroup({
          newPassword: new UntypedFormControl('', Validators.required),
@@ -72,6 +72,6 @@ export class PasswordResetComponent implements OnInit {
    }
 
    cancel() {
-      this.router.navigate(['/']);
+      this.router.navigate(['/auth/login']);
    }
 }

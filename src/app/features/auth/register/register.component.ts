@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UntypedFormControl, Validators, UntypedFormGroup } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
-import { AuthenticationService } from 'src/app/core/services/auth.service';
-import { NotificationService } from 'src/app/core/services/notification.service';
+import { NotificationService } from '../../../core/services/notification.service';
+import { AuthenticationService } from '../../../core/services/auth.service';
 
 @Component({
-   selector: 'app-login',
-   templateUrl: 'login.component.html',
-   styleUrls: ['login.component.css'],
+   selector: 'app-register',
+   templateUrl: 'register.component.html',
+   styleUrls: ['register.component.css'],
 })
-export class LoginComponent implements OnInit {
+export class RegisterComponent implements OnInit {
    loginForm!: UntypedFormGroup;
    loading!: boolean;
 
@@ -37,13 +37,13 @@ export class LoginComponent implements OnInit {
       });
    }
 
-   login() {
+   register(): void {
       const email = this.loginForm.get('email')?.value;
       const password = this.loginForm.get('password')?.value;
       const rememberMe = this.loginForm.get('rememberMe')?.value;
 
       this.loading = true;
-      this.authenticationService.login$(email.toLowerCase(), password).subscribe(
+      this.authenticationService.register$(email.toLowerCase(), password).subscribe(
          (data: boolean) => {
             console.log(data);
             if (rememberMe) {
@@ -60,11 +60,7 @@ export class LoginComponent implements OnInit {
       );
    }
 
-   resetPassword(): void {
-      this.router.navigate(['/auth/password-reset-request']);
-   }
-
-   navigateToRegister(): void {
-      this.router.navigate(['/auth/register']);
+   navigateToLoginPage(): void {
+      this.router.navigate(['/auth/login']);
    }
 }

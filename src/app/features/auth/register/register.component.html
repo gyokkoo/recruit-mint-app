@@ -2,7 +2,7 @@
    <form [formGroup]="loginForm" fxFlex="30%" fxFlex.sm="50%" fxFlex.xs="90%">
       <mat-card>
          <mat-card-title>Recruit Mint</mat-card-title>
-         <mat-card-subtitle>Вход в системата</mat-card-subtitle>
+         <mat-card-subtitle>Регистрация в системата</mat-card-subtitle>
          <mat-card-content>
             <mat-form-field class="full-width">
                <input
@@ -44,29 +44,20 @@
                   <span>Паролата е <strong>задължително</strong> поле</span>
                </mat-error>
             </mat-form-field>
-
-            <div class="full-width">
-               <mat-slide-toggle formControlName="rememberMe"
-                  >Запомни този имейл адрес</mat-slide-toggle
-               >
-            </div>
          </mat-card-content>
 
          <mat-card-actions class="login-actions">
             <button
                mat-raised-button
-               id="login"
+               id="register"
                color="primary"
                [disabled]="loginForm.invalid || loading"
-               (click)="login()"
+               (click)="register()"
             >
-               Логин
-            </button>
-            <button mat-button id="register" (click)="navigateToRegister()" type="button">
                Регистрация
             </button>
-            <button mat-button id="resetPassword" (click)="resetPassword()" type="button">
-               Забравена парола
+            <button mat-button id="resetPassword" (click)="navigateToLoginPage()" type="button">
+               Вход
             </button>
          </mat-card-actions>
       </mat-card>
