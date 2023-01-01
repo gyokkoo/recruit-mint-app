@@ -1,6 +1,6 @@
 <div class="container" fxLayout="row" fxLayoutAlign="center none">
    <div fxFlex="95%">
-      <div class="container" fxLayout="row" fxLayoutAlign="center none">
+      <div *ngIf='currentUser' class="container" fxLayout="row" fxLayoutAlign="center none">
          <h2>Здравейте, {{ currentUser.fullName }}!</h2>
       </div>
 

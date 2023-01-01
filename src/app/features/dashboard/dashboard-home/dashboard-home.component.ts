@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { Title } from '@angular/platform-browser';
 import { NGXLogger } from 'ngx-logger';
@@ -19,13 +19,15 @@ export class DashboardHomeComponent implements OnInit {
       private logger: NGXLogger
    ) {}
 
-   ngOnInit() {
+   ngOnInit(): void {
       this.currentUser = this.authService.getCurrentUser();
-      this.titleService.setTitle('angular-material-template - Dashboard');
-      this.logger.log('Dashboard loaded');
+      if (this.currentUser) {
+         this.titleService.setTitle('angular-material-template - Dashboard');
+         this.logger.log('Dashboard loaded');
 
-      setTimeout(() => {
-         this.notificationService.openSnackBar('Здравейте!');
-      });
+         setTimeout(() => {
+            this.notificationService.openSnackBar('Здравейте!');
+         }, 100);
+      }
    }
 }

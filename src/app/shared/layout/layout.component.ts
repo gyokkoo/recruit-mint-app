@@ -13,11 +13,12 @@ import { AuthGuard } from 'src/app/core/guards/auth.guard';
    styleUrls: ['./layout.component.css'],
 })
 export class LayoutComponent implements OnInit, OnDestroy, AfterViewInit {
-   private _mobileQueryListener: () => void;
+   private readonly _mobileQueryListener: () => void;
    mobileQuery: MediaQueryList;
    showSpinner: boolean = false;
    userName: string = '';
    isAdmin: boolean = false;
+   isLoggedIn: boolean = false;
 
    private autoLogoutSubscription: Subscription = new Subscription();
 
@@ -36,15 +37,17 @@ export class LayoutComponent implements OnInit, OnDestroy, AfterViewInit {
 
    ngOnInit(): void {
       const user = this.authService.getCurrentUser();
+      this.isLoggedIn = !!user;
+      if (user) {
+         this.isAdmin = user.isAdmin || false;
+         this.userName = user.fullName || '';
 
-      this.isAdmin = user.isAdmin;
-      this.userName = user.fullName;
-
-      // Auto log-out subscription
-      const timer$ = timer(2000, 5000);
-      this.autoLogoutSubscription = timer$.subscribe(() => {
-         this.authGuard.canActivate();
-      });
+         // Auto log-out subscription
+         const timer$ = timer(2000, 5000);
+         this.autoLogoutSubscription = timer$.subscribe(() => {
+            this.authGuard.canActivate();
+         });
+      }
    }
 
    ngOnDestroy(): void {
