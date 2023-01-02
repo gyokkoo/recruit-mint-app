@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       this.createForm();
    }
 
-   private createForm() {
+   private createForm(): void {
       const savedUserEmail = localStorage.getItem('savedUserEmail');
 
       this.loginForm = new UntypedFormGroup({
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
       });
    }
 
-   login() {
+   login(): void {
       const email = this.loginForm.get('email')?.value;
       const password = this.loginForm.get('password')?.value;
       const rememberMe = this.loginForm.get('rememberMe')?.value;

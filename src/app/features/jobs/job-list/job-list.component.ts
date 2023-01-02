@@ -15,7 +15,7 @@ export interface JobItem {
 }
 
 @Component({
-   selector: 'job-list',
+   selector: 'app-job-list',
    templateUrl: 'job-list.component.html',
    styleUrls: ['job-list.component.css'],
 })

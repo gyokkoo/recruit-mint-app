@@ -11,6 +11,8 @@ import { AuthenticationService } from '../../../core/services/auth.service';
    styleUrls: ['register.component.css'],
 })
 export class RegisterComponent implements OnInit {
+   hideNewPassword: boolean = true;
+   hideNewPasswordConfirm: boolean = true;
    loginForm!: UntypedFormGroup;
    loading!: boolean;
 
@@ -21,36 +23,38 @@ export class RegisterComponent implements OnInit {
       private authenticationService: AuthenticationService
    ) {}
 
-   ngOnInit() {
+   ngOnInit(): void {
       this.titleService.setTitle('angular-material-template - Login');
       this.authenticationService.logout();
       this.createForm();
    }
 
-   private createForm() {
+   private createForm(): void {
       const savedUserEmail = localStorage.getItem('savedUserEmail');
 
       this.loginForm = new UntypedFormGroup({
          email: new UntypedFormControl(savedUserEmail, [Validators.required, Validators.email]),
          password: new UntypedFormControl('', Validators.required),
-         rememberMe: new UntypedFormControl(savedUserEmail !== null),
+         passwordConfirm: new UntypedFormControl('', Validators.required),
+         phone: new UntypedFormControl(''),
       });
    }
 
    register(): void {
       const email = this.loginForm.get('email')?.value;
       const password = this.loginForm.get('password')?.value;
-      const rememberMe = this.loginForm.get('rememberMe')?.value;
+      const passwordConfirm = this.loginForm.get('passwordConfirm')?.value;
+      const phone = this.loginForm.get('phone')?.value;
+
+      if (password !== passwordConfirm) {
+         this.notificationService.openSnackBar('Паролите не съвпадат');
+         return;
+      }
 
       this.loading = true;
       this.authenticationService.register$(email.toLowerCase(), password).subscribe(
          (data: boolean) => {
             console.log(data);
-            if (rememberMe) {
-               localStorage.setItem('savedUserEmail', email);
-            } else {
-               localStorage.removeItem('savedUserEmail');
-            }
             this.router.navigate(['/']);
          },
          (error: any) => {

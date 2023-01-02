@@ -34,15 +34,55 @@
                   matInput
                   placeholder="Парола"
                   formControlName="password"
-                  type="password"
+                  [type]="hideNewPassword ? 'password' : 'text'"
                   autocomplete="current-password"
                />
+               <mat-icon
+                  id="togglePasswordVisibility"
+                  matSuffix
+                  (click)="hideNewPassword = !hideNewPassword"
+               >
+                  {{ hideNewPassword ? 'visibility' : 'visibility_off' }}
+               </mat-icon>
+
                <mat-error
                   id="requiredPasswordError"
-                  *ngIf="loginForm.controls['email'].hasError('required')"
+                  *ngIf="loginForm.controls['password'].hasError('required')"
                >
                   <span>Паролата е <strong>задължително</strong> поле</span>
                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+               <input
+                  id="passwordConfirmInput"
+                  matInput
+                  placeholder="Потвърждаване на парола"
+                  formControlName="passwordConfirm"
+                  [type]="hideNewPasswordConfirm ? 'password' : 'text'"
+                  autocomplete="new-password"
+               />
+               <mat-icon
+                  id="togglePasswordConfirmVisibility"
+                  matSuffix
+                  (click)="hideNewPasswordConfirm = !hideNewPasswordConfirm"
+               >
+                  {{ hideNewPasswordConfirm ? 'visibility' : 'visibility_off' }}
+               </mat-icon>
+
+               <mat-error *ngIf="loginForm.controls['passwordConfirm'].hasError('required')">
+                  Паролата е <strong>задължително</strong> поле
+               </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+               <input
+                  id="phoneInput"
+                  matInput
+                  placeholder="Телефон за връзка"
+                  formControlName="phone"
+                  type="text"
+               />
             </mat-form-field>
          </mat-card-content>
 
