@@ -1,4 +1,4 @@
-import { JobItem } from './job-list.component';
+import { JobItem } from './job-list/job-list.component';
 
 export const jobData: JobItem[] = [
    {

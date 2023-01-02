@@ -4,7 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { NGXLogger } from 'ngx-logger';
 import { Title } from '@angular/platform-browser';
 import { NotificationService } from '../../../core/services/notification.service';
-import { jobData } from './job-list.data';
+import { jobData } from '../job-list.data';
 
 export interface JobItem {
    id: string;
@@ -50,6 +50,14 @@ export class JobListComponent implements OnInit {
       //     this.deleteRowData(result.data);
       //   }
       // });
+   }
+
+   navigateToDetails(jobItem: any): void {
+      console.log(jobItem);
+   }
+
+   applyFilter(event: any): void {
+      console.log(event.value);
    }
 
    ngOnInit(): void {

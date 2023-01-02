@@ -3,12 +3,19 @@ import { Routes, RouterModule } from '@angular/router';
 import { LayoutComponent } from 'src/app/shared/layout/layout.component';
 
 import { JobListComponent } from './job-list/job-list.component';
+import { JobListDetailsComponent } from './job-list-details/job-list-details.component';
 
 const routes: Routes = [
    {
       path: '',
       component: LayoutComponent,
-      children: [{ path: '', component: JobListComponent }],
+      children: [
+         { path: '', component: JobListComponent },
+         {
+            path: 'details/:id',
+            component: JobListDetailsComponent,
+         },
+      ],
    },
 ];
 
@@ -16,4 +23,4 @@ const routes: Routes = [
    imports: [RouterModule.forChild(routes)],
    exports: [RouterModule],
 })
-export class CustomersRoutingModule {}
+export class JobsRoutingModule {}

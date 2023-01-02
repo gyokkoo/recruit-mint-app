@@ -9,3 +9,8 @@ table {
 th.mat-sort-header-sorted {
     color: black;
 }
+
+.job-table a, .job-table a:hover {
+    /* TODO: Use proper color for link within a table. */
+    color: initial;
+}
