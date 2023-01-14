@@ -14,8 +14,8 @@ const appRoutes: Routes = [
          import('./features/dashboard/dashboard.module').then((m) => m.DashboardModule),
    },
    {
-      path: 'customers',
-      loadChildren: () => import('./features/jobs/customers.module').then((m) => m.CustomersModule),
+      path: 'job-list',
+      loadChildren: () => import('./features/jobs/jobs.module').then((m) => m.JobsModule),
       canActivate: [AuthGuard],
    },
    {
@@ -52,7 +52,12 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-   imports: [RouterModule.forRoot(appRoutes)],
+   imports: [
+      RouterModule.forRoot(
+         appRoutes,
+         { enableTracing: false } // <-- debugging purposes only
+      ),
+   ],
    exports: [RouterModule],
    providers: [],
 })

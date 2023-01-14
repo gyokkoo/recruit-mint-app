@@ -27,7 +27,11 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/styles/purple-green.css",
+              "src/assets/styles/deeppurple-amber.css",
+              "src/assets/styles/pink-bluegrey.css",
+              "src/assets/styles/indigo-pink.css"
             ],
             "scripts": []
           },

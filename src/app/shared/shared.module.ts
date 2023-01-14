@@ -10,6 +10,7 @@ import { ContentPlaceholderAnimationComponent } from './content-placeholder-anim
 import { LocalDatePipe } from './pipes/local-date.pipe';
 import { YesNoPipe } from './pipes/yes-no.pipe';
 import { LayoutComponent } from './layout/layout.component';
+import { MenuComponent } from './layout/menu/menu.component';
 
 @NgModule({
    imports: [
@@ -26,6 +27,7 @@ import { LayoutComponent } from './layout/layout.component';
       LocalDatePipe,
       YesNoPipe,
       LayoutComponent,
+      MenuComponent,
    ],
    exports: [
       FormsModule,

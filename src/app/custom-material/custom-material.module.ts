@@ -35,6 +35,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { SelectCheckAllComponent } from './select-check-all/select-check-all.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
+import { ThemeService } from './theme.service';
+import { StyleManagerService } from './style-manager';
 
 export const MY_FORMATS = {
    parse: {
@@ -116,6 +118,8 @@ export const MY_FORMATS = {
          useValue: MY_FORMATS,
       },
       { provide: LOCALE_ID, useValue: 'en-gb' },
+      ThemeService,
+      StyleManagerService,
    ],
    declarations: [SelectCheckAllComponent],
 })
