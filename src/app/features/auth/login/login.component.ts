@@ -52,6 +52,7 @@ export class LoginComponent implements OnInit {
                localStorage.removeItem('savedUserEmail');
             }
             this.router.navigate(['/']);
+            this.loading = false;
          },
          (error: any) => {
             this.notificationService.openSnackBar(error.error);
@@ -62,9 +63,5 @@ export class LoginComponent implements OnInit {
 
    resetPassword(): void {
       this.router.navigate(['/auth/password-reset-request']);
-   }
-
-   navigateToRegister(): void {
-      this.router.navigate(['/auth/register']);
    }
 }

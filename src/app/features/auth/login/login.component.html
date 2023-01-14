@@ -46,7 +46,9 @@
             </mat-form-field>
 
             <div class="full-width">
-               <mat-slide-toggle formControlName="rememberMe">Запомни този имейл адрес</mat-slide-toggle>
+               <mat-slide-toggle formControlName="rememberMe"
+                  >Запомни този имейл адрес</mat-slide-toggle
+               >
             </div>
          </mat-card-content>
 
@@ -59,9 +61,6 @@
                (click)="login()"
             >
                Логин
-            </button>
-            <button mat-button id="register" (click)="navigateToRegister()" type="button">
-               Регистрация
             </button>
             <button mat-button id="resetPassword" (click)="resetPassword()" type="button">
                Забравена парола

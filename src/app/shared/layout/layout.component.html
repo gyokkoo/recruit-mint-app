@@ -11,13 +11,12 @@
 
       <span class="navbar-spacer"></span>
 
-      <ng-container *ngIf="isLoggedIn">
+      <ng-container>
          <app-menu
             [userName]="userName"
             [themeOptions]="options$ | async"
             (themeOptionsChange)="themeChangeHandler($event)"
-            >></app-menu
-         >
+         ></app-menu>
       </ng-container>
    </mat-toolbar>
 

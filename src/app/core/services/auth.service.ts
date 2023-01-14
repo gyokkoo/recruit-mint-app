@@ -1,15 +1,15 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { delay, map } from 'rxjs/operators';
-import * as jwt_decode from 'jwt-decode';
 import * as moment from 'moment';
-import { environment } from '../../../environments/environment';
-import { of, EMPTY, Observable } from 'rxjs';
+import { of, Observable, Subject, BehaviorSubject } from 'rxjs';
 
 @Injectable({
    providedIn: 'root',
 })
 export class AuthenticationService {
+   private isLoggedIn: Subject<boolean> = new BehaviorSubject<boolean>(!!this.getCurrentUser());
+
    constructor(private http: HttpClient, @Inject('LOCALSTORAGE') private localStorage: Storage) {}
 
    login$(email: string, password: string): Observable<boolean> {
@@ -18,6 +18,7 @@ export class AuthenticationService {
          map((/*response*/) => {
             // set token property
             // const decodedToken = jwt_decode(response['token']);
+            this.isLoggedIn.next(true);
 
             let isHr: boolean = false;
             let isAdmin: boolean = false;
@@ -56,6 +57,7 @@ export class AuthenticationService {
       console.log('Logout()');
       // clear token remove user from local storage to log user out
       this.localStorage.removeItem('currentUser');
+      this.isLoggedIn.next(false);
    }
 
    getCurrentUser(): any {
@@ -63,6 +65,10 @@ export class AuthenticationService {
       const currentUser: any = this.localStorage.getItem('currentUser');
 
       return JSON.parse(currentUser);
+   }
+
+   isLoggedIn$(): Observable<boolean> {
+      return this.isLoggedIn.asObservable();
    }
 
    passwordResetRequest(email: string) {

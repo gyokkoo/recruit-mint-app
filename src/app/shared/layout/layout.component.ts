@@ -39,19 +39,23 @@ export class LayoutComponent implements OnInit, OnDestroy, AfterViewInit {
    }
 
    ngOnInit(): void {
-      const user = this.authService.getCurrentUser();
-      this.isLoggedIn = !!user;
-      if (user) {
-         this.isAdmin = user.isAdmin || false;
-         this.userName = user.fullName || '';
+      this.authService.isLoggedIn$().subscribe((isLoggedIn: boolean) => {
+         this.isLoggedIn = isLoggedIn;
 
-         // Auto log-out subscription
-         const timer$ = timer(2000, 5000);
-         this.autoLogoutSubscription = timer$.subscribe(() => {
-            this.authGuard.canActivate();
-         });
-      }
+         const user = this.authService.getCurrentUser();
+         if (isLoggedIn && user) {
+            this.isAdmin = user.isAdmin || false;
+            this.userName = user.fullName || '';
 
+            // Auto log-out subscription
+            const timer$ = timer(2000, 5000);
+            this.autoLogoutSubscription = timer$.subscribe(() => {
+               this.authGuard.canActivate();
+            });
+         }
+      });
+
+      // TODO: Initialize the theme
       // this.themeService.setTheme('deeppurple-amber');
    }
 

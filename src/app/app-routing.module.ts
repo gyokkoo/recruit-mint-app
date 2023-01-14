@@ -5,13 +5,13 @@ import { AuthGuard } from './core/guards/auth.guard';
 
 const appRoutes: Routes = [
    {
-      path: 'auth',
-      loadChildren: () => import('./features/auth/auth.module').then((m) => m.AuthModule),
-   },
-   {
       path: 'dashboard',
       loadChildren: () =>
          import('./features/dashboard/dashboard.module').then((m) => m.DashboardModule),
+   },
+   {
+      path: 'auth',
+      loadChildren: () => import('./features/auth/auth.module').then((m) => m.AuthModule),
    },
    {
       path: 'job-list',
