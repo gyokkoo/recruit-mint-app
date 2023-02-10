@@ -11,6 +11,7 @@ export interface JobItem {
    name: string;
    requirements: string;
    description: string;
+   longDescription?: string;
    isRemote: boolean;
 }
 

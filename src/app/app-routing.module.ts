@@ -42,7 +42,6 @@ const appRoutes: Routes = [
    {
       path: 'about',
       loadChildren: () => import('./features/about/about.module').then((m) => m.AboutModule),
-      canActivate: [AuthGuard],
    },
    {
       path: '**',

@@ -54,7 +54,6 @@ export class AuthenticationService {
    }
 
    logout(): void {
-      console.log('Logout()');
       // clear token remove user from local storage to log user out
       this.localStorage.removeItem('currentUser');
       this.isLoggedIn.next(false);

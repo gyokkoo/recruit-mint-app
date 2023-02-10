@@ -1,22 +1,12 @@
 <section fxLayout="row wrap" fxLayoutAlign="center center">
    <mat-card fxFlex="500px" fxFlex.xs="100%">
-      <mat-card-title>Детайли за обява </mat-card-title>
+      <mat-card-title>{{ jobInfo?.name }} </mat-card-title>
       <mat-card-content>
          <div fxLayout="column wrap" fxLayoutGap="40px">
-            <div fxLayout="row wrap" fxFlex>
-               <div fxFlex><strong>Име</strong></div>
-               <div fxFlex>{{ jobInfo?.name }}</div>
-            </div>
+            <!--            <pre fxFlex>{{ jobInfo?.longDescription }}</pre>-->
 
-            <div fxLayout="row wrap" fxFlex>
-               <div fxFlex><strong>Изисквания</strong></div>
-               <div fxFlex>{{ jobInfo?.requirements }}</div>
-            </div>
-
-            <div fxLayout="row wrap" fxFlex>
-               <div fxFlex><strong>Описание</strong></div>
-               <div fxFlex>{{ jobInfo?.description }}</div>
-            </div>
+            <app-rich-text-editor [content]="jobInfo?.longDescription || ''">
+            </app-rich-text-editor>
 
             <!--            <div fxLayout="row wrap" fxFlex *ngIf="owner?.accounts.length <= 2; else advancedUser">-->
             <!--               <div fxFlex><strong>Type of user:</strong></div>-->

@@ -11,6 +11,7 @@ import { LocalDatePipe } from './pipes/local-date.pipe';
 import { YesNoPipe } from './pipes/yes-no.pipe';
 import { LayoutComponent } from './layout/layout.component';
 import { MenuComponent } from './layout/menu/menu.component';
+import { RichTextEditorComponent } from './rich-text-editor/rick-text-editor.component';
 
 @NgModule({
    imports: [
@@ -28,6 +29,7 @@ import { MenuComponent } from './layout/menu/menu.component';
       YesNoPipe,
       LayoutComponent,
       MenuComponent,
+      RichTextEditorComponent,
    ],
    exports: [
       FormsModule,
@@ -39,6 +41,7 @@ import { MenuComponent } from './layout/menu/menu.component';
       ContentPlaceholderAnimationComponent,
       LocalDatePipe,
       YesNoPipe,
+      RichTextEditorComponent,
    ],
 })
 export class SharedModule {}

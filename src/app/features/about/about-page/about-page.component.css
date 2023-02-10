@@ -1,3 +1,7 @@
-mat-icon {
-    color: rgb(200, 0, 0);
+i, a {
+    vertical-align: middle;
+}
+
+a:link, a:active, a:hover {
+    color: inherit;
 }

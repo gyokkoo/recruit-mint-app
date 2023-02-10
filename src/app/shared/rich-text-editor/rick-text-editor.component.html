@@ -1,0 +1,30 @@
+<mat-form-field class="rich-text-editor">
+   <textarea
+      matInput
+      [readonly]="!(hasEditPrivilege && isEditing)"
+      [(ngModel)]="content"
+      (ngModelChange)="updateContent($event)"
+      rows="40"
+      style="resize: vertical; overflow: auto; width: 100%"
+   ></textarea>
+   <!--   <textarea matInput contenteditable *ngIf="!isEditing" [innerHTML]="content"></textarea>-->
+</mat-form-field>
+<button
+   mat-raised-button
+   color="primary"
+   *ngIf="!isEditing && hasEditPrivilege"
+   (click)="toggleEdit()"
+>
+   <mat-icon aria-label="Edit">edit</mat-icon>
+
+   Промени
+</button>
+<button
+   mat-raised-button
+   color="primary"
+   *ngIf="isEditing && hasEditPrivilege"
+   (click)="toggleEdit()"
+>
+   <mat-icon aria-label="Edit">save</mat-icon>
+   Запази
+</button>

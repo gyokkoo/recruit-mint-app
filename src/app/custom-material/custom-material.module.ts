@@ -80,6 +80,8 @@ export const MY_FORMATS = {
       MatExpansionModule,
       DragDropModule,
       MatSortModule,
+      MatMenuModule,
+      MatFormFieldModule,
    ],
    exports: [
       CommonModule,
@@ -111,6 +113,7 @@ export const MY_FORMATS = {
       SelectCheckAllComponent,
       DragDropModule,
       MatSortModule,
+      MatFormFieldModule,
    ],
    providers: [
       {
