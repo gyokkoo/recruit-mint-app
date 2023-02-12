@@ -16,11 +16,17 @@ const appRoutes: Routes = [
    {
       path: 'job-list',
       loadChildren: () => import('./features/jobs/jobs.module').then((m) => m.JobsModule),
-      // canActivate: [AuthGuard],
    },
    {
-      path: 'users',
-      loadChildren: () => import('./features/users/users.module').then((m) => m.UsersModule),
+      path: 'interviews-list',
+      loadChildren: () =>
+         import('./features/interviews/interviews.module').then((m) => m.InterviewsModule),
+      canActivate: [AuthGuard],
+   },
+   {
+      path: 'candidates',
+      loadChildren: () =>
+         import('./features/candidates/candidates.module').then((m) => m.CandidatesModule),
       canActivate: [AuthGuard],
    },
    {

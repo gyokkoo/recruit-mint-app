@@ -47,9 +47,24 @@
                <mat-icon mat-list-icon> business </mat-icon>
                <p mat-line>Отворени обяви</p>
             </a>
-            <a *ngIf="isLoggedIn" mat-list-item [routerLink]="['/users']" routerLinkActive="active">
+            <a
+               *ngIf="isLoggedIn"
+               mat-list-item
+               [routerLink]="['/candidates']"
+               routerLinkActive="active"
+            >
                <mat-icon mat-list-icon> people </mat-icon>
                <p mat-line>Всички кандидати</p>
+            </a>
+
+            <a
+               *ngIf="isHr"
+               mat-list-item
+               [routerLink]="['/interviews-list']"
+               routerLinkActive="active"
+            >
+               <mat-icon mat-list-icon> date_range </mat-icon>
+               <p mat-line>Интервюта</p>
             </a>
 
             <a *ngIf="isLoggedIn" mat-list-item [routerLink]="['/account/profile']">

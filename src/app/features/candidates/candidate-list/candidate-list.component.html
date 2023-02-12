@@ -1,0 +1,85 @@
+<div class="container" fxLayout="row" fxLayoutAlign="center none">
+   <div fxFlex="95%">
+      <mat-card>
+         <mat-card-content>
+            <h2>Всички кандидати</h2>
+
+            <table mat-table [dataSource]="dataSource">
+               <!-- ID Column -->
+               <ng-container matColumnDef="id">
+                  <th mat-header-cell *matHeaderCellDef>Номер</th>
+                  <td mat-cell *matCellDef="let candidate">
+                     <a [routerLink]="['/candidates/details/', candidate.id]">
+                        {{ candidate.id }}
+                     </a>
+                  </td>
+               </ng-container>
+
+               <!-- Name Column -->
+               <ng-container matColumnDef="name">
+                  <th mat-header-cell *matHeaderCellDef>Име</th>
+                  <td mat-cell *matCellDef="let candidate">{{ candidate.name }}</td>
+               </ng-container>
+
+               <!-- Contact Details Column -->
+               <ng-container matColumnDef="contact_details">
+                  <th mat-header-cell *matHeaderCellDef>Имейл</th>
+                  <td mat-cell *matCellDef="let candidate">{{ candidate.contact_details }}</td>
+               </ng-container>
+
+               <!-- Education Column -->
+               <ng-container matColumnDef="education">
+                  <th mat-header-cell *matHeaderCellDef>Образование</th>
+                  <td mat-cell *matCellDef="let candidate">{{ candidate.education }}</td>
+               </ng-container>
+
+               <!-- Documents Column -->
+               <ng-container matColumnDef="documents">
+                  <th mat-header-cell *matHeaderCellDef>Документи</th>
+                  <td mat-cell *matCellDef="let candidate">{{ candidate.documents }}</td>
+               </ng-container>
+
+               <!-- Work Experience Column -->
+               <ng-container matColumnDef="work_experience">
+                  <th mat-header-cell *matHeaderCellDef>Опит</th>
+                  <td mat-cell *matCellDef="let candidate">{{ candidate.work_experience }}</td>
+               </ng-container>
+
+               <!-- Job Opening ID Column -->
+               <ng-container matColumnDef="job_opening_string">
+                  <th mat-header-cell *matHeaderCellDef>Позиция</th>
+                  <td mat-cell *matCellDef="let candidate">{{ candidate.job_opening_string }}</td>
+               </ng-container>
+
+               <!-- Account Information Column -->
+               <!--               <ng-container matColumnDef="account_information">-->
+               <!--                  <th mat-header-cell *matHeaderCellDef>Account Information</th>-->
+               <!--                  <td mat-cell *matCellDef="let candidate">{{ candidate.account_information }}</td>-->
+               <!--               </ng-container>-->
+
+               <!-- Current Stage ID Column -->
+               <ng-container matColumnDef="current_stage_string">
+                  <th mat-header-cell *matHeaderCellDef>Статус</th>
+                  <td mat-cell *matCellDef="let candidate">{{ candidate.current_stage_string }}</td>
+               </ng-container>
+
+               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+               <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            </table>
+
+            <div
+               *ngIf="!dataSource?.data?.length"
+               class="container"
+               fxLayout="row"
+               fxLayoutAlign="center none"
+            >
+               <div fxFlex="50%" class="text-center no-records animate">
+                  <mat-icon>people_outline</mat-icon>
+                  <p>Все още няма кандидати.</p>
+               </div>
+               <mat-icon> </mat-icon>
+            </div>
+         </mat-card-content>
+      </mat-card>
+   </div>
+</div>

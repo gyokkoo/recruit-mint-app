@@ -21,6 +21,7 @@ export class LayoutComponent implements OnInit, OnDestroy, AfterViewInit {
    userName: string = '';
    isAdmin: boolean = false;
    isLoggedIn: boolean = false;
+   isHr: boolean = false;
    private autoLogoutSubscription: Subscription = new Subscription();
    options$: Observable<ThemeOption[]> = this.themeService.getThemeOptions();
 
@@ -39,6 +40,8 @@ export class LayoutComponent implements OnInit, OnDestroy, AfterViewInit {
    }
 
    ngOnInit(): void {
+      this.authService.isHr$().subscribe((isHr) => (this.isHr = isHr));
+
       this.authService.isLoggedIn$().subscribe((isLoggedIn: boolean) => {
          this.isLoggedIn = isLoggedIn;
 

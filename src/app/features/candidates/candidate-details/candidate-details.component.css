@@ -1,0 +1,15 @@
+.center-btn {
+   text-align: center;
+}
+
+.mat-form-field {
+   width: 100%;
+}
+
+.mat-select .mat-select-trigger {
+   margin: 1em 0;
+}
+
+.mat-select-panel-wrap {
+   margin-top: 40px !important;
+}

@@ -1,0 +1,93 @@
+<section fxLayout="row wrap" fxLayoutAlign="center center">
+   <mat-card class="candidate-details-card" fxFlex="500px" fxFlex.xs="100%">
+      <mat-card-header>
+         <mat-card-title>Детайли за кандидат</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+         <div class="candidate-details-content" *ngIf="candidate">
+            <mat-form-field appearance="outline">
+               <mat-label>Име</mat-label>
+               <input matInput [value]="candidate.name" [disabled]="isEditing" />
+            </mat-form-field>
+            <br />
+            <mat-form-field appearance="outline">
+               <mat-label>Имейл</mat-label>
+               <input matInput [value]="candidate.contact_details" [disabled]="isEditing" />
+            </mat-form-field>
+            <br />
+            <mat-form-field appearance="outline">
+               <mat-label>Документи</mat-label>
+               <textarea matInput [value]="candidate.documents" [disabled]="isEditing"></textarea>
+            </mat-form-field>
+            <br />
+            <mat-form-field appearance="outline">
+               <mat-label>Образование</mat-label>
+               <textarea matInput [value]="candidate.education" [disabled]="isEditing"></textarea>
+            </mat-form-field>
+            <br />
+            <mat-form-field appearance="outline">
+               <mat-label>Опит</mat-label>
+               <textarea
+                  matInput
+                  [value]="candidate.work_experience"
+                  [disabled]="isEditing"
+               ></textarea>
+            </mat-form-field>
+            <br />
+            <!--            <mat-form-field appearance="outline">-->
+            <!--               <mat-label>Статус</mat-label>-->
+            <!--               <input matInput [value]="candidate.current_stage_string" [disabled]="isEditing" />-->
+            <!--            </mat-form-field>-->
+
+            <mat-form-field appearance="outline">
+               <mat-label>Бележки</mat-label>
+               <textarea
+                  matInput
+                  rows="3"
+                  [value]="'Добър кандидат! Ще говоря с шефа да го наемем'"
+                  [disabled]="isEditing"
+               ></textarea>
+            </mat-form-field>
+
+            <br />
+
+            <mat-form-field style="padding-left: 10px">
+               <mat-label>Статус</mat-label>
+               <mat-select
+                  [(value)]="candidate.current_stage_string"
+                  [disabled]="isEditing"
+                  disableOptionCentering
+                  panelClass="myPanelClass"
+               >
+                  <mat-option value="Създадено интервю">Създадено интервю (Created)</mat-option>
+                  <mat-option value="Планирано интервю">Планирано интервю (Scheduled)</mat-option>
+                  <mat-option value="Провежда се">Провежда се (In progress)</mat-option>
+                  <mat-option value="Отменено интервю">Отменено интервю (Cancelled)</mat-option>
+                  <mat-option value="Кандидат отхвърлен">Кандидат отхвърлен (Rejected)</mat-option>
+                  <mat-option value="Кандидат добавен към резерви"
+                     >Кандидат добавен към резерви (Added to reserves)</mat-option
+                  >
+                  <mat-option value="Към 2-ро интервю (Follow-up interview)"
+                     >Към 2-ро интервю (Follow-up interview)</mat-option
+                  >
+                  <mat-option value="Кандидат одобрен/назначен"
+                     >Кандидат одобрен/назначен (Accepted)</mat-option
+                  >
+                  <mat-option value="Кандидат отхвърлил"
+                     >Кандидат отхвърлил (Candidate rejected)</mat-option
+                  >
+               </mat-select>
+            </mat-form-field>
+         </div>
+      </mat-card-content>
+      <mat-card-actions>
+         <button mat-raised-button color="primary" *ngIf="isEditing" (click)="editCandidate()">
+            Редактирай
+         </button>
+         <button mat-raised-button color="primary" *ngIf="!isEditing" (click)="editCandidate()">
+            Запази
+         </button>
+         <button mat-raised-button color="warn" (click)="deleteCandidate()">Архивирай</button>
+      </mat-card-actions>
+   </mat-card>
+</section>

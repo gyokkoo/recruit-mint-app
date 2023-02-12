@@ -1,0 +1,88 @@
+<div class="container" fxLayout="row" fxLayoutAlign="center none">
+   <div fxFlex="95%">
+      <mat-card>
+         <mat-card-content>
+            <h2>Всички интервюта</h2>
+
+            <button
+               mat-button
+               class="add-btn"
+               (click)="addInterview()"
+               mat-flat-button
+               color="primary"
+            >
+               Добави интервю
+            </button>
+
+            <table mat-table [dataSource]="dataSource">
+               <ng-container matColumnDef="date_time">
+                  <th mat-header-cell *matHeaderCellDef>Дата интервю</th>
+                  <td mat-cell *matCellDef="let element">
+                     <div *ngIf="!editing || element.id !== editedElementId">
+                        {{ element.date_time }}
+                     </div>
+                     <div *ngIf="editing && element.id === editedElementId">
+                        <mat-form-field>
+                           <input
+                              matInput
+                              [matDatepicker]="picker"
+                              [(ngModel)]="element.date_time"
+                           />
+                           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                           <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                        <button mat-button (click)="saveInterview(element)">Запази</button>
+                     </div>
+                  </td>
+               </ng-container>
+
+               <ng-container matColumnDef="interviewer">
+                  <th mat-header-cell *matHeaderCellDef>Интервюиращ</th>
+                  <td mat-cell *matCellDef="let element">{{ element.interviewer }}</td>
+               </ng-container>
+
+               <ng-container matColumnDef="result">
+                  <th mat-header-cell *matHeaderCellDef>Резултат</th>
+                  <td mat-cell *matCellDef="let element">{{ element.result }}</td>
+               </ng-container>
+
+               <ng-container matColumnDef="candidate_id">
+                  <th mat-header-cell *matHeaderCellDef>Номер на кандидат</th>
+                  <td mat-cell *matCellDef="let element">{{ element.candidate_id }}</td>
+               </ng-container>
+
+               <ng-container matColumnDef="stage">
+                  <th mat-header-cell *matHeaderCellDef>Фаза</th>
+                  <td mat-cell *matCellDef="let element">{{ element.stage }}</td>
+               </ng-container>
+
+               <ng-container matColumnDef="actions">
+                  <th mat-header-cell *matHeaderCellDef>Промяна</th>
+                  <td mat-cell *matCellDef="let element">
+                     <button mat-button (click)="editInterview(element)">
+                        <mat-icon>edit</mat-icon>
+                        Редактирай
+                     </button>
+                  </td>
+               </ng-container>
+
+               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+               <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            </table>
+
+            <div
+               *ngIf="!dataSource?.length"
+               class="container"
+               fxLayout="row"
+               fxLayoutAlign="center none"
+            >
+               <div fxFlex="50%" class="text-center no-records animate">
+                  <mat-icon>date_range</mat-icon>
+                  <p>Все още няма интервюта.</p>
+               </div>
+               <mat-icon> </mat-icon>
+            </div>
+         </mat-card-content>
+      </mat-card>
+   </div>
+</div>
