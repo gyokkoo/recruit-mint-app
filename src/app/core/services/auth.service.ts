@@ -70,6 +70,10 @@ export class AuthenticationService {
       return this.isLoggedIn.asObservable();
    }
 
+   isHr$(): Observable<boolean> {
+      return of(this.getCurrentUser()?.isHr || false);
+   }
+
    passwordResetRequest(email: string) {
       return of(true).pipe(delay(1000));
    }

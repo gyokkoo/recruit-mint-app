@@ -7,11 +7,11 @@ import { NotificationService } from '../../../core/services/notification.service
 import { jobData } from '../job-list.data';
 
 export interface JobItem {
-   id: string;
+   id: number;
    name: string;
    requirements: string;
    description: string;
-   longDescription?: string;
+   longDescription: string;
    isRemote: boolean;
 }
 
@@ -23,7 +23,7 @@ export interface JobItem {
 export class JobListComponent implements OnInit {
    @Input() showActions: boolean = true;
 
-   displayedColumns: string[] = ['name', 'requirements', 'description', 'isRemote', 'action'];
+   displayedColumns: string[] = ['name', 'description', 'requirements', 'action'];
 
    dataSource = new MatTableDataSource(jobData);
 

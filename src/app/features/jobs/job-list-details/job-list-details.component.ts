@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { jobData } from '../job-list.data';
 import { MatSelectChange } from '@angular/material/select';
 import { JobItem } from '../job-list/job-list.component';
+import { AuthenticationService } from '../../../core/services/auth.service';
+import { Observable, of } from 'rxjs';
 
 @Component({
    selector: 'app-job-list-details',
@@ -11,14 +13,24 @@ import { JobItem } from '../job-list/job-list.component';
 })
 export class JobListDetailsComponent implements OnInit {
    jobInfo: JobItem | undefined;
-   selectOptions: any = [];
 
-   constructor(private route: ActivatedRoute) {}
+   isHr: boolean = false;
+
+   constructor(
+      private authenticationService: AuthenticationService,
+      private route: ActivatedRoute
+   ) {}
 
    ngOnInit(): void {
-      const id: string | null = this.route.snapshot.paramMap.get('id');
+      const id: number = Number(this.route.snapshot.paramMap.get('id'));
       this.jobInfo = jobData.find((info) => info.id === id);
+
+      this.authenticationService.isHr$().subscribe((isHr) => (this.isHr = isHr));
    }
 
-   onChange($event: MatSelectChange) {}
+   updateDescription(description: string) {
+      if (this.jobInfo) {
+         this.jobInfo.longDescription = description;
+      }
+   }
 }

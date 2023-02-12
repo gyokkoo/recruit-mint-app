@@ -16,7 +16,7 @@ const appRoutes: Routes = [
    {
       path: 'job-list',
       loadChildren: () => import('./features/jobs/jobs.module').then((m) => m.JobsModule),
-      canActivate: [AuthGuard],
+      // canActivate: [AuthGuard],
    },
    {
       path: 'users',

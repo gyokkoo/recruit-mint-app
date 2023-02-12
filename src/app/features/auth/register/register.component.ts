@@ -24,8 +24,8 @@ export class RegisterComponent implements OnInit {
    ) {}
 
    ngOnInit(): void {
-      this.titleService.setTitle('angular-material-template - Login');
-      this.authenticationService.logout();
+      this.titleService.setTitle('angular-material-template - Register');
+      // this.authenticationService.logout();
       this.createForm();
    }
 

@@ -11,3 +11,7 @@ textarea {
    border-color: Transparent;
    overflow: auto;
 }
+
+.center-btn {
+   text-align: center;
+}
