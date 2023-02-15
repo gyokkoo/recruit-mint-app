@@ -1,0 +1,28 @@
+.file-upload {
+   display: flex;
+   flex-direction: column;
+   margin-bottom: 16px;
+}
+
+.custom-file-upload {
+   display: flex;
+   width: 145px;
+   align-items: center;
+   padding: 6px 12px;
+   cursor: pointer;
+   color: #fff;
+   background-color: #2196f3;
+   border-color: #2196f3;
+   border-radius: 4px;
+   margin-top: 8px;
+}
+
+.custom-file-upload input[type='file'] {
+   display: none;
+}
+
+.material-icons {
+   font-size: 16px;
+   margin-right: 8px;
+   vertical-align: middle;
+}

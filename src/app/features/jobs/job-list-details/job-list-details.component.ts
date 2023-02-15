@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { jobData } from '../job-list.data';
-import { MatSelectChange } from '@angular/material/select';
 import { JobItem } from '../job-list/job-list.component';
 import { AuthenticationService } from '../../../core/services/auth.service';
-import { Observable, of } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { JobApplyComponent } from '../job-apply/job-apply.component';
 
 @Component({
    selector: 'app-job-list-details',
@@ -18,19 +18,30 @@ export class JobListDetailsComponent implements OnInit {
 
    constructor(
       private authenticationService: AuthenticationService,
-      private route: ActivatedRoute
+      private route: ActivatedRoute,
+      private dialog: MatDialog
    ) {}
 
    ngOnInit(): void {
       const id: number = Number(this.route.snapshot.paramMap.get('id'));
       this.jobInfo = jobData.find((info) => info.id === id);
 
-      this.authenticationService.isHr$().subscribe((isHr) => (this.isHr = isHr));
+      this.authenticationService.isHr$().subscribe((isHr) => (this.isHr = !isHr));
    }
 
    updateDescription(description: string) {
       if (this.jobInfo) {
          this.jobInfo.longDescription = description;
       }
+   }
+
+   applyForJob(): void {
+      const dialogRef = this.dialog.open(JobApplyComponent, {
+         width: '275px',
+      });
+
+      dialogRef.afterClosed().subscribe((result) => {
+         console.log(result);
+      });
    }
 }

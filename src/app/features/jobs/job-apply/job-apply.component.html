@@ -1,0 +1,55 @@
+<h2 mat-dialog-title>Кандидатстване</h2>
+<div mat-dialog-content>
+   <mat-form-field>
+      <input matInput placeholder="Име" [(ngModel)]="personalInfo.name" required />
+   </mat-form-field>
+   <mat-form-field>
+      <input matInput placeholder="Локация" [(ngModel)]="personalInfo.location" required />
+   </mat-form-field>
+   <mat-form-field>
+      <input matInput placeholder="Умения" [(ngModel)]="personalInfo.skills" required />
+   </mat-form-field>
+
+   <br />
+
+   <div class="file-upload">
+      <label>CV (задължително)</label>
+      <div class="custom-file-upload">
+         <input type="file" (change)="onFileChange($event)" />
+         <i class="material-icons">cloud_upload</i>Прикачи файл
+      </div>
+   </div>
+
+   <div class="file-upload">
+      <label>Сертификати (опционално)</label>
+      <div class="custom-file-upload">
+         <input type="file" (change)="achievements.certificates = true; onFileChange($event)" />
+         <i class="material-icons">cloud_upload</i>Прикачи файл
+      </div>
+   </div>
+   <div class="file-upload">
+      <label>Диплома (опционално)</label>
+      <div class="custom-file-upload">
+         <input type="file" (change)="achievements.diploma = true; onFileChange($event)" />
+         <i class="material-icons">cloud_upload</i>Прикачи файл
+      </div>
+   </div>
+   <div class="file-upload">
+      <label>Други документи (опционално)</label>
+      <div class="custom-file-upload">
+         <input type="file" (change)="achievements.other = true; onFileChange($event)" />
+         <i class="material-icons">cloud_upload</i>Прикачи файл
+      </div>
+   </div>
+</div>
+<div mat-dialog-actions>
+   <button mat-button (click)="onNoClick()">Откажи</button>
+   <button
+      mat-raised-button
+      color="primary"
+      (click)="onSubmit()"
+      [disabled]="!personalInfo.name || !personalInfo.location || !personalInfo.skills"
+   >
+      Кандидатствай
+   </button>
+</div>
