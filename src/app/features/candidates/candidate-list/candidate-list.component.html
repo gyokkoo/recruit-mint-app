@@ -1,8 +1,32 @@
-<div class="container" fxLayout="row" fxLayoutAlign="center none">
+<div class="container candidates" fxLayout="row" fxLayoutAlign="center none">
    <div fxFlex="95%">
       <mat-card>
          <mat-card-content>
             <h2>Всички кандидати</h2>
+
+            <mat-form-field style="width: 200px">
+               <input matInput placeholder="Търсене по ключова дума" />
+            </mat-form-field>
+
+            <mat-form-field class="example-chip-list">
+               <mat-chip-list #chipList class="mat-chip-list-horizontal">
+                  <div fxLayout="row wrap">
+                     <mat-chip
+                        *ngFor="let stage of stages"
+                        [selectable]="selectable"
+                        [removable]="removable"
+                        (removed)="remove(stage)"
+                     >
+                        {{ stage.display }}
+                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                     </mat-chip>
+                  </div>
+               </mat-chip-list>
+            </mat-form-field>
+
+            <button mat-button style="float: right" mat-flat-button color="primary">
+               Изтегли справка
+            </button>
 
             <table mat-table [dataSource]="dataSource">
                <!-- ID Column -->

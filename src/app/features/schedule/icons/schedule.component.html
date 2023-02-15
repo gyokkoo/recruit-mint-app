@@ -1,0 +1,55 @@
+<div class="container" fxLayout="row" fxLayoutAlign="center none">
+   <div fxFlex="95%">
+      <mat-card>
+         <mat-card-content>
+            <h2>График</h2>
+
+            <mat-table [dataSource]="interviewData">
+               <ng-container matColumnDef="position">
+                  <mat-header-cell *matHeaderCellDef> Позиция </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{ element.position }} </mat-cell>
+               </ng-container>
+
+               <ng-container matColumnDef="candidate">
+                  <mat-header-cell *matHeaderCellDef> Кандидат </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{ element.candidate }} </mat-cell>
+               </ng-container>
+
+               <ng-container matColumnDef="date">
+                  <mat-header-cell *matHeaderCellDef>Дата</mat-header-cell>
+                  <mat-cell *matCellDef="let element">
+                     <div *ngIf="!editing || element.id !== editElementId">
+                        {{ element.date }}
+                     </div>
+                     <div *ngIf="editing && element.id === editElementId">
+                        <mat-form-field>
+                           <input matInput [matDatepicker]="picker" [(ngModel)]="element.date" />
+                           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                           <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                        <button mat-button (click)="editing = false">Запази</button>
+                     </div>
+                  </mat-cell>
+               </ng-container>
+
+               <ng-container matColumnDef="place">
+                  <mat-header-cell *matHeaderCellDef> Място </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{ element.place }} </mat-cell>
+               </ng-container>
+
+               <ng-container matColumnDef="actions">
+                  <mat-header-cell *matHeaderCellDef> Промяна </mat-header-cell>
+                  <mat-cell *matCellDef="let element">
+                     <a mat-icon-button (click)="editRow(element)">
+                        <mat-icon>edit</mat-icon>
+                     </a>
+                  </mat-cell>
+               </ng-container>
+
+               <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+               <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+            </mat-table>
+         </mat-card-content>
+      </mat-card>
+   </div>
+</div>

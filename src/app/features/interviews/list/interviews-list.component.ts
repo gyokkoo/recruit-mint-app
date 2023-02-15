@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class InterviewsListComponent implements OnInit {
    displayedColumns: string[] = [
       'date_time',
+      'place',
       'interviewer',
       'result',
       'candidate_id',
@@ -27,6 +28,7 @@ export class InterviewsListComponent implements OnInit {
          {
             id: 1,
             date_time: '2022-02-13 10:00:00',
+            place: 'Garitage Park сграда 4, ет. 3, зала 301',
             interviewer: 'Драган Драганов',
             result: '-',
             candidate_id: 15,
@@ -36,6 +38,7 @@ export class InterviewsListComponent implements OnInit {
             id: 2,
             date_time: '2022-01-02 11:00:00',
             interviewer: 'Иван Петков',
+            place: 'Garitage Park сграда 4, ет. 3, зала 302',
             result: 'Успешно',
             candidate_id: 11,
             stage: 'Преминало',
@@ -43,6 +46,7 @@ export class InterviewsListComponent implements OnInit {
          {
             id: 3,
             date_time: '2022-01-01 12:00:00',
+            place: 'Garitage Park сграда 4, ет. 3, зала 303',
             interviewer: 'Иван Петков',
             result: 'Успешно',
             candidate_id: 9,

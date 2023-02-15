@@ -35,8 +35,9 @@ const appRoutes: Routes = [
       canActivate: [AuthGuard],
    },
    {
-      path: 'icons',
-      loadChildren: () => import('./features/icons/icons.module').then((m) => m.IconsModule),
+      path: 'schedule',
+      loadChildren: () =>
+         import('./features/schedule/schedule.module').then((m) => m.ScheduleModule),
       canActivate: [AuthGuard],
    },
    {

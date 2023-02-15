@@ -31,7 +31,7 @@ export const CANDIDATE_DATA: Candidate[] = [
       job_opening_string: 'Senior Java Developer',
       account_information: 1,
       current_stage_id: 2,
-      current_stage_string: 'Създадено интервю',
+      current_stage_string: 'Планирано интервю',
    },
    {
       id: 11,
@@ -44,7 +44,7 @@ export const CANDIDATE_DATA: Candidate[] = [
       job_opening_string: 'Системент администратор',
       account_information: 2,
       current_stage_id: 1,
-      current_stage_string: 'Назначен',
+      current_stage_string: 'Към 2-ро интервю',
    },
 ];
 
@@ -66,6 +66,16 @@ export class CandidateListComponent implements OnInit {
    ];
    dataSource = new MatTableDataSource(CANDIDATE_DATA);
 
+   stages: any[] = [
+      { value: 'scheduled', display: 'Планирано интервю' },
+      { value: 'accepted', display: 'Кандидат одобрен/назначен' },
+      { value: 'added_to_reserves', display: 'Кандидат добавен резерви (1-во интервю)' },
+      { value: 'added_to_reserves_second', display: 'Кандидат добавен резерви (2-ро интервю)' },
+      { value: 'follow_up_interview', display: 'Към 2-ро интервю' },
+   ];
+   selectable = true;
+   removable = true;
+
    constructor(
       private logger: NGXLogger,
       private notificationService: NotificationService,
@@ -75,5 +85,13 @@ export class CandidateListComponent implements OnInit {
    ngOnInit() {
       this.titleService.setTitle('angular-material-template - Users');
       this.logger.log('Users loaded');
+   }
+
+   remove(stage: any): void {
+      const index = this.stages.indexOf(stage);
+
+      if (index >= 0) {
+         this.stages.splice(index, 1);
+      }
    }
 }

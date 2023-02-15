@@ -36,6 +36,11 @@
                   </td>
                </ng-container>
 
+               <ng-container matColumnDef="place">
+                  <th mat-header-cell *matHeaderCellDef>Място</th>
+                  <td mat-cell *matCellDef="let element">{{ element.place }}</td>
+               </ng-container>
+
                <ng-container matColumnDef="interviewer">
                   <th mat-header-cell *matHeaderCellDef>Интервюиращ</th>
                   <td mat-cell *matCellDef="let element">{{ element.interviewer }}</td>
