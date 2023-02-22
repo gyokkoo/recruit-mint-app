@@ -26,7 +26,7 @@ export class JobListDetailsComponent implements OnInit {
       const id: number = Number(this.route.snapshot.paramMap.get('id'));
       this.jobInfo = jobData.find((info) => info.id === id);
 
-      this.authenticationService.isHr$().subscribe((isHr) => (this.isHr = !isHr));
+      this.authenticationService.isHr$().subscribe((isHr) => (this.isHr = isHr));
    }
 
    updateDescription(description: string) {
