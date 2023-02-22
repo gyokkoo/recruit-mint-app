@@ -22,10 +22,11 @@ export class AuthenticationService {
 
             let isHr: boolean = false;
             let isAdmin: boolean = false;
-            if (email?.toLowerCase()?.indexOf('recruit')) {
+            if (email?.toLowerCase()?.includes('recruit')) {
                isHr = true;
                isAdmin = true;
             }
+            console.log('is HR?', isHr);
 
             const name: string = email.split('@')[0];
 
